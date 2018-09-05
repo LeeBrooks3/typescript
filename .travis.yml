@@ -1,0 +1,18 @@
+language: node_js
+
+node_js:
+- 8
+
+install:
+- npm install
+
+cache:
+  directories:
+  - "node_modules"
+
+script:
+- npm run test:ci
+- npm run tslint
+
+after_success:
+- bash <(curl -s https://codecov.io/bash)
