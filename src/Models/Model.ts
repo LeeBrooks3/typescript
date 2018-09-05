@@ -156,12 +156,14 @@ export default abstract class Model implements ModelInterface {
             this.original[key] = value;
         }
 
-        this[key] = this.castAttribute(key, value);
+        if (this[key] === undefined) {
+            this[key] = this.castAttribute(key, value);
 
-        Object.defineProperty(this, key, {
-            get: (): any => this.getAttribute(key),
-            set: (newValue: any): this => this.setAttribute(key, value),
-        });
+            Object.defineProperty(this, key, {
+                get: (): any => this.getAttribute(key),
+                set: (newValue: any): this => this.setAttribute(key, newValue),
+            });
+        }
 
         return this;
     }
@@ -175,7 +177,13 @@ export default abstract class Model implements ModelInterface {
         return this;
     }
 
-    /** @inheritDoc */
+    /**
+     * Cast an attribute to a native PHP type.
+     *
+     * @param {string} key
+     * @param {*} value
+     * @return {*}
+     */
     protected castAttribute(key: string, value: any): any {
         if (_.isNull(value)) {
             return value;
@@ -207,33 +215,56 @@ export default abstract class Model implements ModelInterface {
         }
     }
 
-    /** @inheritDoc */
+    /**
+     * Get the casts array.
+     *
+     * @return {object}
+     */
     protected getCasts(): object {
         return this.casts;
     }
 
-    /** @inheritDoc */
+    /**
+     * Get the fillable attributes for the model.
+     *
+     * @return {string[]}
+     */
     protected getFillable(): string[] {
         return this.fillable;
     }
 
-    /** @inheritDoc */
+    /**
+     * Get the guarded attributes for the model.
+     *
+     * @return {string[]}
+     */
     protected getGuarded(): string[] {
         return this.guarded;
     }
 
-    /** @inheritDoc */
+    /**
+     * Determine whether an attribute should be cast to a native type.
+     *
+     * @param {string} key
+     * @param {string[]} types
+     * @return {boolean}
+     */
     protected hasCast(key: string, types: string[] = []): boolean {
         const casts: object = this.getCasts();
 
         if (_.has(casts, key)) {
-            return types ? _.includes(types, casts[key]) : true;
+            return types.length > 0 ? _.includes(types, casts[key]) : true;
         }
 
         return false;
     }
 
-    /** @inheritDoc */
+    /**
+     * Determine if the given attribute may be mass assigned.
+     *
+     * @param {string} key
+     * @return {boolean}
+     */
     protected isFillable(key: string): boolean {
         return _.includes(this.getFillable(), key) && !_.includes(this.getGuarded(), key);
     }

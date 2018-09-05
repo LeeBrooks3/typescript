@@ -1,3 +1,4 @@
+import * as faker from 'faker';
 import ClientInterface from '../../../../src/Http/Clients/ClientInterface';
 import ResponseInterface from '../../../../src/Http/Responses/ResponseInterface';
 import Model from '../../../../src/Models/Model';
@@ -35,7 +36,7 @@ describe('Repositories/ModelRepository', () => {
     });
 
     describe('get', () => {
-        it('makes a GET request to retrieve a listing of the resource', async () => {
+        it('should make a GET request to retrieve a listing of the resource', async () => {
             const fakeEndpoint: string = 'someEndpoint';
             const fakeParams: object = {};
 
@@ -49,7 +50,7 @@ describe('Repositories/ModelRepository', () => {
     });
 
     describe('create', () => {
-        it('makes a POST request to create a new resource', async () => {
+        it('should make a POST request to create a new resource', async () => {
             const fakeEndpoint: string = 'someEndpoint';
             const fakeAttributes: object = {};
 
@@ -61,7 +62,7 @@ describe('Repositories/ModelRepository', () => {
     });
 
     describe('find', () => {
-        it('makes a GET request to retrieve the specified resource', async () => {
+        it('should make a GET request to retrieve the specified resource', async () => {
             const fakeId: number = 1;
             const fakeEndpoint: string = `someEndpoint/${fakeId}`;
             const fakeParams: object = {};
@@ -74,12 +75,12 @@ describe('Repositories/ModelRepository', () => {
     });
 
     describe('update', () => {
-        it('makes a PATCH request', async () => {
-            const fakeId: number = 1;
+        it('should make a PATCH request', async () => {
+            const fakeRouteKeyValue: string = faker.random.uuid();
             const fakeModel: Model = new ExampleModel({
-                id: fakeId,
+                uuid: fakeRouteKeyValue,
             });
-            const fakeEndpoint: string = `someEndpoint/${fakeId}`;
+            const fakeEndpoint: string = `someEndpoint/${fakeRouteKeyValue}`;
             const fakeAttributes: object = {};
 
             const result: ExampleModel = await modelRepository.update(fakeModel, fakeAttributes);
@@ -90,12 +91,12 @@ describe('Repositories/ModelRepository', () => {
     });
 
     describe('delete', () => {
-        it('makes a DELETE request', async () => {
-            const fakeId: number = 1;
+        it('should make a DELETE request', async () => {
+            const fakeRouteKeyValue: string = faker.random.uuid();
             const fakeModel: Model = new ExampleModel({
-                id: fakeId,
+                uuid: fakeRouteKeyValue,
             });
-            const fakeEndpoint: string = `someEndpoint/${fakeId}`;
+            const fakeEndpoint: string = `someEndpoint/${fakeRouteKeyValue}`;
             const fakeParams: object = {};
 
             await modelRepository.delete(fakeModel, fakeParams);

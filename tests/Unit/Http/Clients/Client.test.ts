@@ -23,7 +23,7 @@ describe('Http/Clients/Client', () => {
     });
 
     describe('constructor', () => {
-        it('creates an axios instance', () => {
+        it('should create an axios instance', () => {
             client = new ExampleClient();
 
             expect(axios.create).toHaveBeenCalled();
@@ -31,7 +31,7 @@ describe('Http/Clients/Client', () => {
     });
 
     describe('get', () => {
-        it('makes a GET request', () => {
+        it('should make a GET request', () => {
             const fakeEndpoint: string = 'someEndpoint';
             const fakeParams: object = {};
 
@@ -44,7 +44,7 @@ describe('Http/Clients/Client', () => {
     });
 
     describe('post', () => {
-        it('makes a POST request', () => {
+        it('should make a POST request', () => {
             const fakeEndpoint: string = 'someEndpoint';
             const fakeAttributes: object = {};
 
@@ -55,7 +55,7 @@ describe('Http/Clients/Client', () => {
     });
 
     describe('patch', () => {
-        it('makes a PATCH request', () => {
+        it('should make a PATCH request', () => {
             const fakeEndpoint: string = 'someEndpoint';
             const fakeAttributes: object = {};
 
@@ -66,7 +66,7 @@ describe('Http/Clients/Client', () => {
     });
 
     describe('put', () => {
-        it('makes a PUT request', () => {
+        it('should make a PUT request', () => {
             const fakeEndpoint: string = 'someEndpoint';
             const fakeAttributes: object = {};
 
@@ -77,7 +77,7 @@ describe('Http/Clients/Client', () => {
     });
 
     describe('delete', () => {
-        it('makes a DELETE request', () => {
+        it('should make a DELETE request', () => {
             const fakeEndpoint: string = 'someEndpoint';
             const fakeParams: object = {};
 
