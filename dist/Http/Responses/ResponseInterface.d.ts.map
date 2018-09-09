@@ -1,1 +1,0 @@
-{"version":3,"file":"ResponseInterface.d.ts","sourceRoot":"","sources":["../../../src/Http/Responses/ResponseInterface.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,OAAO,WAAW,iBAAiB,CAAC,CAAC,GAAG,GAAG;IAC9C,IAAI,EAAE,CAAC,CAAC;IACR,MAAM,EAAE,MAAM,CAAC;IACf,UAAU,EAAE,MAAM,CAAC;IACnB,OAAO,EAAE,GAAG,CAAC;IACb,OAAO,CAAC,EAAE,GAAG,CAAC;CACjB"}

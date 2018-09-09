@@ -39,4 +39,3 @@ export default interface ModelRepositoryInterface<Model> {
      */
     delete(model: ModelInterface, params: object): void;
 }
-//# sourceMappingURL=ModelRepositoryInterface.d.ts.map
