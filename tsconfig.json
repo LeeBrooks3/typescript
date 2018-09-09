@@ -2,9 +2,9 @@
   "compilerOptions": {
     "declaration": true,
     "lib": ["es2015"],
-    "module": "commonjs",
+    "module": "amd",
     "moduleResolution": "node",
-    "outDir": "dist",
+    "outFile": "dist/index.js",
     "rootDir": "src",
     "sourceMap": true
   },
