@@ -1,18 +1,15 @@
 {
   "compilerOptions": {
     "declaration": true,
+    "declarationDir": "dist",
+    "declarationMap": true,
     "lib": ["es2015"],
-    "module": "amd",
+    "module": "commonjs",
     "moduleResolution": "node",
-    "outFile": "dist/index.js",
     "rootDir": "src",
     "sourceMap": true
   },
   "include": [
     "src/**/*.ts"
-  ],
-  "exclude": [
-    "**/__mocks__",
-    "**/__tests__"
   ]
 }
