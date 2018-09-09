@@ -2,20 +2,18 @@ import * as path from 'path';
 import * as webpack from 'webpack';
 
 const config: webpack.Configuration = {
-    entry: [
-        './src/Http/Clients/Client.js',
-        './src/Http/Clients/ClientInterface.js',
-        './src/Http/Responses/ResponseInterface.js',
-        './src/Models/Model.js',
-        './src/Models/ModelInterface.js',
-        './src/Repositories/ModelRepository.js',
-        './src/Repositories/ModelRepositoryInterface.js',
-    ],
+    entry: './src/index.js',
     mode: 'production',
+    optimization: {
+        minimize: true,
+    },
     output: {
         filename: 'index.js',
         path: path.resolve(__dirname, 'dist'),
     },
+    plugins: [
+        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    ],
 };
 
 export default config;

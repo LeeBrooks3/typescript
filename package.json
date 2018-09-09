@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A library of core TypeScript things.",
   "main": "dist/index.js",
+  "types": "src/index.d.ts",
   "keywords": [
     "TypeScript"
   ],
@@ -27,13 +28,17 @@
     "tslint": "^5.11.0",
     "typescript": "^2.9.2",
     "webpack": "^4.17.2",
+    "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^3.1.0"
   },
   "scripts": {
-    "build": "node_modules/.bin/tsc && webpack",
+    "build": "npm run clean && npm run tsc && webpack",
+    "build:dev": "npm run clean && npm run tsc && webpack --config='webpack.config.dev.ts'",
+    "clean": "rm -rf dist",
     "test": "jest",
     "test:ci": "npm run test -- --coverage --runInBand",
     "test:dev": "npm run test -- --watch",
+    "tsc": "node_modules/.bin/tsc",
     "tslint": "node_modules/.bin/tslint 'src/**/*.ts'"
   },
   "jest": {
