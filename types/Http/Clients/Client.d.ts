@@ -1,3 +1,4 @@
+import { AxiosRequestConfig } from 'axios';
 import ResponseInterface from '../Responses/ResponseInterface';
 import ClientInterface from './ClientInterface';
 export default abstract class Client implements ClientInterface {
@@ -5,7 +6,7 @@ export default abstract class Client implements ClientInterface {
     /**
      * Creates a client instance.
      */
-    constructor();
+    constructor(config?: AxiosRequestConfig);
     /** @inheritDoc */
     get(path: string, params: object): Promise<ResponseInterface>;
     /** @inheritDoc */

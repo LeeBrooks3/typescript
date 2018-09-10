@@ -40,8 +40,8 @@ var Client = /** @class */ (function () {
     /**
      * Creates a client instance.
      */
-    function Client() {
-        this.client = axios_1["default"].create();
+    function Client(config) {
+        this.client = axios_1["default"].create(config);
     }
     /** @inheritDoc */
     Client.prototype.get = function (path, params) {

@@ -1,4 +1,4 @@
-import { AxiosInstance, default as axios } from 'axios';
+import { AxiosInstance, AxiosRequestConfig, default as axios } from 'axios';
 import ResponseInterface from '../Responses/ResponseInterface';
 import ClientInterface from './ClientInterface';
 
@@ -8,8 +8,8 @@ export default abstract class Client implements ClientInterface {
     /**
      * Creates a client instance.
      */
-    public constructor() {
-        this.client = axios.create();
+    public constructor(config?: AxiosRequestConfig) {
+        this.client = axios.create(config);
     }
 
     /** @inheritDoc */
