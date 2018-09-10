@@ -1,4 +1,14 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -35,18 +45,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var ModelRepository = /** @class */ (function () {
-    /**
-     * @param {ClientInterface} client
-     */
-    function ModelRepository(client) {
-        /**
-         * The namespace or name of the key used to wrap the main data of the payload.
-         *
-         * @var {string}
-         */
-        this.namespace = 'data';
-        this.client = client;
+var Repository_1 = require("./Repository");
+var ModelRepository = /** @class */ (function (_super) {
+    __extends(ModelRepository, _super);
+    function ModelRepository() {
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     /** @inheritDoc */
     ModelRepository.prototype.get = function (params) {
@@ -145,41 +148,7 @@ var ModelRepository = /** @class */ (function () {
             });
         });
     };
-    /**
-     * Returns the client.
-     *
-     * @return {ClientInterface}
-     */
-    ModelRepository.prototype.getClient = function () {
-        return this.client;
-    };
-    /**
-     * Returns the endpoint.
-     *
-     * @return {string}
-     */
-    ModelRepository.prototype.getEndpoint = function () {
-        return this.endpoint;
-    };
-    /**
-     * Returns the namespace.
-     *
-     * @return {string|null}
-     */
-    ModelRepository.prototype.getNamespace = function () {
-        return this.namespace === undefined ? null : this.namespace;
-    };
-    /**
-     * Returns the unwrapped main data from the response payload.
-     *
-     * @param {ResponseInterface} response
-     * @return {*}
-     */
-    ModelRepository.prototype.getResponseData = function (response) {
-        var namespace = this.getNamespace();
-        return namespace ? response.data[namespace] : response.data;
-    };
     return ModelRepository;
-}());
+}(Repository_1["default"]));
 exports["default"] = ModelRepository;
 //# sourceMappingURL=ModelRepository.js.map
