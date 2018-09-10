@@ -1,9 +1,12 @@
 {
   "compilerOptions": {
     "declaration": true,
+    "declarationDir": "dist",
+    "declarationMap": true,
     "lib": ["es2015"],
     "module": "commonjs",
     "moduleResolution": "node",
+    "outDir": "dist",
     "rootDir": "src",
     "sourceMap": true
   },

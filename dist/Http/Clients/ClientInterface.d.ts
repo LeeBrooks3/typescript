@@ -41,3 +41,4 @@ export default interface ClientInterface {
      */
     delete(uri: string, params: object): Promise<ResponseInterface>;
 }
+//# sourceMappingURL=ClientInterface.d.ts.map

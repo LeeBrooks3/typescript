@@ -5,3 +5,4 @@ export default interface ResponseInterface<T = any> {
     headers: any;
     request?: any;
 }
+//# sourceMappingURL=ResponseInterface.d.ts.map

@@ -68,3 +68,4 @@ export default abstract class ModelRepository<Model> implements ModelRepositoryI
      */
     protected abstract makeModel(attributes: object): Model;
 }
+//# sourceMappingURL=ModelRepository.d.ts.map

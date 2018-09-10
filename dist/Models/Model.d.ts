@@ -110,3 +110,4 @@ export default abstract class Model implements ModelInterface {
      */
     protected isFillable(key: string): boolean;
 }
+//# sourceMappingURL=Model.d.ts.map

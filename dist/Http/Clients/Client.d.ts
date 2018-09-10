@@ -17,3 +17,4 @@ export default abstract class Client implements ClientInterface {
     /** @inheritDoc */
     delete(path: string, params: object): Promise<ResponseInterface>;
 }
+//# sourceMappingURL=Client.d.ts.map

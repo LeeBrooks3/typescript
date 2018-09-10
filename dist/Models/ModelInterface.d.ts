@@ -93,3 +93,4 @@ export default interface ModelInterface {
      */
     setAttributes(attributes: object, isOriginal: boolean): this;
 }
+//# sourceMappingURL=ModelInterface.d.ts.map
