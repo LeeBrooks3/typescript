@@ -4,9 +4,9 @@ import ModelInterface from '../Models/ModelInterface';
 import ModelRepositoryInterface from './ModelRepositoryInterface';
 import Repository from './Repository';
 
-export default abstract class ModelRepository<Model> extends Repository<Model> implements ModelRepositoryInterface<Model> { // tslint:disable-line max-line-length
+export default abstract class ModelRepository<T = ModelInterface> extends Repository<T> implements ModelRepositoryInterface<T> { // tslint:disable-line max-line-length
     /** @inheritDoc */
-    public async get(params: object = {}): Promise<Model[]> {
+    public async get(params: object = {}): Promise<T[]> {
         const client: ClientInterface = this.getClient();
         const endpoint: string = this.getEndpoint();
         const response: ResponseInterface = await client.get(endpoint, params);
@@ -16,7 +16,7 @@ export default abstract class ModelRepository<Model> extends Repository<Model> i
     }
 
     /** @inheritDoc */
-    public async create(attributes: object = {}): Promise<Model> {
+    public async create(attributes: object = {}): Promise<T> {
         const client: ClientInterface = this.getClient();
         const endpoint: string = this.getEndpoint();
         const response: ResponseInterface = await client.post(`${endpoint}`, attributes);
@@ -26,7 +26,7 @@ export default abstract class ModelRepository<Model> extends Repository<Model> i
     }
 
     /** @inheritDoc */
-    public async find(id: number | string, params: object = {}): Promise<Model> {
+    public async find(id: number | string, params: object = {}): Promise<T> {
         const client: ClientInterface = this.getClient();
         const endpoint: string = this.getEndpoint();
         const response: ResponseInterface = await client.get(`${endpoint}/${id}`, params);
@@ -36,7 +36,7 @@ export default abstract class ModelRepository<Model> extends Repository<Model> i
     }
 
     /** @inheritDoc */
-    public async update(model: ModelInterface, params: object = {}): Promise<Model> {
+    public async update(model: ModelInterface, params: object = {}): Promise<T> {
         const client: ClientInterface = this.getClient();
         const endpoint: string = this.getEndpoint();
         const id: any = model.getRouteKey();

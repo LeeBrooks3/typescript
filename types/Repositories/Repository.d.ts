@@ -1,6 +1,7 @@
 import ClientInterface from '../Http/Clients/ClientInterface';
 import ResponseInterface from '../Http/Responses/ResponseInterface';
-export default abstract class Repository<Model> {
+import ModelInterface from '../Models/ModelInterface';
+export default abstract class Repository<T = ModelInterface> {
     /**
      * A client instance.
      *
@@ -54,6 +55,6 @@ export default abstract class Repository<Model> {
      * @param {object} attributes
      * @return {ModelInterface}
      */
-    protected abstract makeModel(attributes: object): Model;
+    protected abstract makeModel(attributes: object): T;
 }
 //# sourceMappingURL=Repository.d.ts.map

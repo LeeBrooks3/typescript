@@ -1,15 +1,15 @@
 import ModelInterface from '../Models/ModelInterface';
 import ModelRepositoryInterface from './ModelRepositoryInterface';
 import Repository from './Repository';
-export default abstract class ModelRepository<Model> extends Repository<Model> implements ModelRepositoryInterface<Model> {
+export default abstract class ModelRepository<T = ModelInterface> extends Repository<T> implements ModelRepositoryInterface<T> {
     /** @inheritDoc */
-    get(params?: object): Promise<Model[]>;
+    get(params?: object): Promise<T[]>;
     /** @inheritDoc */
-    create(attributes?: object): Promise<Model>;
+    create(attributes?: object): Promise<T>;
     /** @inheritDoc */
-    find(id: number | string, params?: object): Promise<Model>;
+    find(id: number | string, params?: object): Promise<T>;
     /** @inheritDoc */
-    update(model: ModelInterface, params?: object): Promise<Model>;
+    update(model: ModelInterface, params?: object): Promise<T>;
     /** @inheritDoc */
     delete(model: ModelInterface, params?: object): Promise<void>;
 }

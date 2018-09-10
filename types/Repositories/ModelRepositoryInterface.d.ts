@@ -1,19 +1,19 @@
 import ModelInterface from '../Models/ModelInterface';
-export default interface ModelRepositoryInterface<Model> {
+export default interface ModelRepositoryInterface<T = ModelInterface> {
     /**
      * Retrieve a listing of the resource.
      *
      * @param {object} params
      * @return {Promise<ModelInterface[]>}
      */
-    get(params: object): Promise<Model[]>;
+    get(params: object): Promise<T[]>;
     /**
      * Creates a new resource.
      *
      * @param {object} attributes
      * @return {Promise<ModelInterface>}
      */
-    create(attributes: object): Promise<Model>;
+    create(attributes: object): Promise<T>;
     /**
      * Retrieve the specified resource.
      *
@@ -21,7 +21,7 @@ export default interface ModelRepositoryInterface<Model> {
      * @param {object} params
      * @return {Promise<ModelInterface>}
      */
-    find(id: any, params: object): Promise<Model>;
+    find(id: any, params: object): Promise<T>;
     /**
      * Update the specified resource.
      *
@@ -29,7 +29,7 @@ export default interface ModelRepositoryInterface<Model> {
      * @param {object} attributes
      * @return {Promise<ModelInterface>}
      */
-    update(model: ModelInterface, attributes: object): Promise<Model>;
+    update(model: ModelInterface, attributes: object): Promise<T>;
     /**
      * Remove the specified resource.
      *
