@@ -4,44 +4,32 @@ var _ = require("lodash");
 var moment = require("moment");
 var Model = /** @class */ (function () {
     /**
-     * @param {object} attributes
+     * Sets the given attributes.
      */
     function Model(attributes) {
         if (attributes === void 0) { attributes = {}; }
         /**
          * The model's attributes.
-         *
-         * @var {object}
          */
         this.attributes = {};
         /**
          * The attributes that should be cast to native types.
-         *
-         * @var {object}
          */
         this.casts = {};
         /**
          * The attributes that are mass assignable.
-         *
-         * @var {array}
          */
         this.fillable = [];
         /**
          * The attributes that aren't mass assignable.
-         *
-         * @var {array}
          */
         this.guarded = [];
         /**
          * The model attribute's original state.
-         *
-         * @var array
          */
         this.original = {};
         /**
          * The primary key for the model.
-         *
-         * @var string
          */
         this.primaryKey = 'id';
         this.setAttributes(attributes, true);
@@ -151,10 +139,6 @@ var Model = /** @class */ (function () {
     };
     /**
      * Cast an attribute to a native PHP type.
-     *
-     * @param {string} key
-     * @param {*} value
-     * @return {*}
      */
     Model.prototype.castAttribute = function (key, value) {
         if (_.isNull(value)) {
@@ -186,34 +170,24 @@ var Model = /** @class */ (function () {
     };
     /**
      * Get the casts array.
-     *
-     * @return {object}
      */
     Model.prototype.getCasts = function () {
         return this.casts;
     };
     /**
      * Get the fillable attributes for the model.
-     *
-     * @return {string[]}
      */
     Model.prototype.getFillable = function () {
         return this.fillable;
     };
     /**
      * Get the guarded attributes for the model.
-     *
-     * @return {string[]}
      */
     Model.prototype.getGuarded = function () {
         return this.guarded;
     };
     /**
      * Determine whether an attribute should be cast to a native type.
-     *
-     * @param {string} key
-     * @param {string[]} types
-     * @return {boolean}
      */
     Model.prototype.hasCast = function (key, types) {
         if (types === void 0) { types = []; }
@@ -225,9 +199,6 @@ var Model = /** @class */ (function () {
     };
     /**
      * Determine if the given attribute may be mass assigned.
-     *
-     * @param {string} key
-     * @return {boolean}
      */
     Model.prototype.isFillable = function (key) {
         return _.includes(this.getFillable(), key) && !_.includes(this.getGuarded(), key);

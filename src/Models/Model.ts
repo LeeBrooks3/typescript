@@ -5,48 +5,36 @@ import ModelInterface from './ModelInterface';
 export default abstract class Model implements ModelInterface {
     /**
      * The model's attributes.
-     *
-     * @var {object}
      */
     protected attributes: object = {};
 
     /**
      * The attributes that should be cast to native types.
-     *
-     * @var {object}
      */
     protected casts: object = {};
 
     /**
      * The attributes that are mass assignable.
-     *
-     * @var {array}
      */
     protected fillable: string[] = [];
 
     /**
      * The attributes that aren't mass assignable.
-     *
-     * @var {array}
      */
     protected guarded: string[] = [];
 
     /**
      * The model attribute's original state.
-     *
-     * @var array
      */
     protected original: object = {};
 
     /**
      * The primary key for the model.
-     *
-     * @var string
      */
     protected primaryKey: string = 'id';
 
     /**
-     * @param {object} attributes
+     * Sets the given attributes.
      */
     public constructor(attributes: object = {}) {
         this.setAttributes(attributes, true);
@@ -179,10 +167,6 @@ export default abstract class Model implements ModelInterface {
 
     /**
      * Cast an attribute to a native PHP type.
-     *
-     * @param {string} key
-     * @param {*} value
-     * @return {*}
      */
     protected castAttribute(key: string, value: any): any {
         if (_.isNull(value)) {
@@ -217,8 +201,6 @@ export default abstract class Model implements ModelInterface {
 
     /**
      * Get the casts array.
-     *
-     * @return {object}
      */
     protected getCasts(): object {
         return this.casts;
@@ -226,8 +208,6 @@ export default abstract class Model implements ModelInterface {
 
     /**
      * Get the fillable attributes for the model.
-     *
-     * @return {string[]}
      */
     protected getFillable(): string[] {
         return this.fillable;
@@ -235,8 +215,6 @@ export default abstract class Model implements ModelInterface {
 
     /**
      * Get the guarded attributes for the model.
-     *
-     * @return {string[]}
      */
     protected getGuarded(): string[] {
         return this.guarded;
@@ -244,10 +222,6 @@ export default abstract class Model implements ModelInterface {
 
     /**
      * Determine whether an attribute should be cast to a native type.
-     *
-     * @param {string} key
-     * @param {string[]} types
-     * @return {boolean}
      */
     protected hasCast(key: string, types: string[] = []): boolean {
         const casts: object = this.getCasts();
@@ -261,9 +235,6 @@ export default abstract class Model implements ModelInterface {
 
     /**
      * Determine if the given attribute may be mass assigned.
-     *
-     * @param {string} key
-     * @return {boolean}
      */
     protected isFillable(key: string): boolean {
         return _.includes(this.getFillable(), key) && !_.includes(this.getGuarded(), key);

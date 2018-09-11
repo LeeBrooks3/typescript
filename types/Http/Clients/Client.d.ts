@@ -2,9 +2,12 @@ import { AxiosRequestConfig } from 'axios';
 import ResponseInterface from '../Responses/ResponseInterface';
 import ClientInterface from './ClientInterface';
 export default abstract class Client implements ClientInterface {
+    /**
+     * An axios client instance.
+     */
     private client;
     /**
-     * Creates a client instance.
+     * Creates the axios client instance.
      */
     constructor(config?: AxiosRequestConfig);
     /** @inheritDoc */

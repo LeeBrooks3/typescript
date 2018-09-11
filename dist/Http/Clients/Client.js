@@ -38,7 +38,7 @@ exports.__esModule = true;
 var axios_1 = require("axios");
 var Client = /** @class */ (function () {
     /**
-     * Creates a client instance.
+     * Creates the axios client instance.
      */
     function Client(config) {
         this.client = axios_1["default"].create(config);

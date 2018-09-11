@@ -3,10 +3,13 @@ import ResponseInterface from '../Responses/ResponseInterface';
 import ClientInterface from './ClientInterface';
 
 export default abstract class Client implements ClientInterface {
+    /**
+     * An axios client instance.
+     */
     private client: AxiosInstance;
 
     /**
-     * Creates a client instance.
+     * Creates the axios client instance.
      */
     public constructor(config?: AxiosRequestConfig) {
         this.client = axios.create(config);
