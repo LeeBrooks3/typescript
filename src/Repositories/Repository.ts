@@ -14,9 +14,9 @@ export default abstract class Repository<T = ModelInterface> {
     protected endpoint: string;
 
     /**
-     * The namespace or name of the key used to wrap the main data of the payload.
+     * The envelope or key used to wrap the main data of the payload.
      */
-    protected namespace?: string = 'data';
+    protected envelope?: string;
 
     /**
      * Sets the client instance.
@@ -40,19 +40,19 @@ export default abstract class Repository<T = ModelInterface> {
     }
 
     /**
-     * Returns the namespace.
+     * Returns the envelope.
      */
-    protected getNamespace(): string | null {
-        return this.namespace === undefined ? null : this.namespace;
+    protected getEnvelope(): string | null {
+        return this.envelope === undefined ? null : this.envelope;
     }
 
     /**
      * Returns the unwrapped main data from the response payload.
      */
     protected getResponseData(response: ResponseInterface): any {
-        const namespace: string | null = this.getNamespace();
+        const envelope: string | null = this.getEnvelope();
 
-        return namespace ? response.data[namespace] : response.data;
+        return envelope ? response.data[envelope] : response.data;
     }
 
     /**

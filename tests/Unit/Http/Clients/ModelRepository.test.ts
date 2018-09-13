@@ -10,15 +10,10 @@ describe('Repositories/ModelRepository', () => {
     let modelRepository: ModelRepository<ExampleModel>;
     let mockClient: ClientInterface;
     let mockResponse: ResponseInterface;
-    let mockResponseData: any;
 
     beforeEach(() => {
-        mockResponseData = {
-            data: {},
-        };
-
         mockResponse = {
-            data: mockResponseData,
+            data: {},
             headers: {},
             status: 200,
             statusText: 'OK',
@@ -40,7 +35,7 @@ describe('Repositories/ModelRepository', () => {
             const fakeEndpoint: string = 'someEndpoint';
             const fakeParams: object = {};
 
-            mockResponseData.data = [{}];
+            mockResponse.data = [{}];
 
             const result: ExampleModel[] = await modelRepository.get(fakeParams);
 

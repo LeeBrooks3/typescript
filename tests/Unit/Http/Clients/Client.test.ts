@@ -33,12 +33,15 @@ describe('Http/Clients/Client', () => {
     describe('get', () => {
         it('should make a GET request', () => {
             const fakeEndpoint: string = 'someEndpoint';
-            const fakeParams: object = {};
+            const fakeParams: any = {
+                headers: {},
+            };
 
             client.get(fakeEndpoint, fakeParams);
 
             expect(mockAxiosInstance.get).toHaveBeenCalledWith(fakeEndpoint, {
-                params: fakeParams,
+                headers: {},
+                params: {},
             });
         });
     });
@@ -79,13 +82,10 @@ describe('Http/Clients/Client', () => {
     describe('delete', () => {
         it('should make a DELETE request', () => {
             const fakeEndpoint: string = 'someEndpoint';
-            const fakeParams: object = {};
 
-            client.delete(fakeEndpoint, fakeParams);
+            client.delete(fakeEndpoint);
 
-            expect(mockAxiosInstance.delete).toHaveBeenCalledWith(fakeEndpoint, {
-                params: fakeParams,
-            });
+            expect(mockAxiosInstance.delete).toHaveBeenCalledWith(fakeEndpoint);
         });
     });
 });

@@ -36,6 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 exports.__esModule = true;
 var axios_1 = require("axios");
+var _ = require("lodash");
 var Client = /** @class */ (function () {
     /**
      * Creates the axios client instance.
@@ -48,7 +49,8 @@ var Client = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, this.client.get(path, {
-                        params: params
+                        headers: _.pick(params, ['headers']),
+                        params: _.omit(params, ['headers'])
                     })];
             });
         });
@@ -57,7 +59,10 @@ var Client = /** @class */ (function () {
     Client.prototype.post = function (path, params) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2 /*return*/, this.client.post(path, params)];
+                return [2 /*return*/, this.client.post(path, params, {
+                        headers: _.pick(params, ['headers']),
+                        params: _.pick(params, ['query'])
+                    })];
             });
         });
     };
@@ -65,7 +70,10 @@ var Client = /** @class */ (function () {
     Client.prototype.patch = function (path, params) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2 /*return*/, this.client.patch(path, params)];
+                return [2 /*return*/, this.client.patch(path, params, {
+                        headers: _.pick(params, ['headers']),
+                        params: _.pick(params, ['query'])
+                    })];
             });
         });
     };
@@ -73,7 +81,10 @@ var Client = /** @class */ (function () {
     Client.prototype.put = function (path, params) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2 /*return*/, this.client.put(path, params)];
+                return [2 /*return*/, this.client.put(path, params, {
+                        headers: _.pick(params, ['headers']),
+                        params: _.pick(params, ['query'])
+                    })];
             });
         });
     };
@@ -82,7 +93,8 @@ var Client = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, this.client["delete"](path, {
-                        params: params
+                        headers: _.pick(params, ['headers']),
+                        params: _.omit(params, ['headers'])
                     })];
             });
         });

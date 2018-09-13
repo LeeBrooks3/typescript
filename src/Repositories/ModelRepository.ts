@@ -36,12 +36,12 @@ export default abstract class ModelRepository<T = ModelInterface> extends Reposi
     }
 
     /** @inheritDoc */
-    public async update(model: ModelInterface, params: object = {}): Promise<T> {
+    public async update(model: ModelInterface, attributes: object = {}): Promise<T> {
         const client: ClientInterface = this.getClient();
         const endpoint: string = this.getEndpoint();
         const id: any = model.getRouteKey();
 
-        const response: ResponseInterface = await client.patch(`${endpoint}/${id}`, params);
+        const response: ResponseInterface = await client.patch(`${endpoint}/${id}`, attributes);
         const payload: object = this.getResponseData(response);
 
         return this.makeModel(payload);
