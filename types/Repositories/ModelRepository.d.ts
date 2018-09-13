@@ -9,7 +9,7 @@ export default abstract class ModelRepository<T = ModelInterface> extends Reposi
     /** @inheritDoc */
     find(id: number | string, params?: object): Promise<T>;
     /** @inheritDoc */
-    update(model: ModelInterface, params?: object): Promise<T>;
+    update(model: ModelInterface, attributes?: object): Promise<T>;
     /** @inheritDoc */
     delete(model: ModelInterface, params?: object): Promise<void>;
 }

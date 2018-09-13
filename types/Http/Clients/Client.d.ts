@@ -1,7 +1,8 @@
 import { AxiosRequestConfig } from 'axios';
+import RequestParamsInterface from '../Requests/RequestParamsInterface';
 import ResponseInterface from '../Responses/ResponseInterface';
 import ClientInterface from './ClientInterface';
-export default abstract class Client implements ClientInterface {
+export default class Client implements ClientInterface {
     /**
      * An axios client instance.
      */
@@ -11,14 +12,18 @@ export default abstract class Client implements ClientInterface {
      */
     constructor(config?: AxiosRequestConfig);
     /** @inheritDoc */
-    get(path: string, params: object): Promise<ResponseInterface>;
+    get(path: string, params?: RequestParamsInterface): Promise<ResponseInterface>;
     /** @inheritDoc */
-    post(path: string, params: object): Promise<ResponseInterface>;
+    post(path: string, data: object, params?: RequestParamsInterface): Promise<ResponseInterface>;
     /** @inheritDoc */
-    patch(path: string, params: object): Promise<ResponseInterface>;
+    patch(path: string, data: object, params?: RequestParamsInterface): Promise<ResponseInterface>;
     /** @inheritDoc */
-    put(path: string, params: object): Promise<ResponseInterface>;
+    put(path: string, data: object, params?: RequestParamsInterface): Promise<ResponseInterface>;
     /** @inheritDoc */
-    delete(path: string, params: object): Promise<ResponseInterface>;
+    delete(path: string, params?: RequestParamsInterface): Promise<ResponseInterface>;
+    /**
+     * Processes the given request parameters.
+     */
+    private processParams;
 }
 //# sourceMappingURL=Client.d.ts.map

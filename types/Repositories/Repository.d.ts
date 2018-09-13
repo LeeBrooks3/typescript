@@ -11,9 +11,9 @@ export default abstract class Repository<T = ModelInterface> {
      */
     protected endpoint: string;
     /**
-     * The namespace or name of the key used to wrap the main data of the payload.
+     * The envelope or key used to wrap the main data of the payload.
      */
-    protected namespace?: string;
+    protected envelope?: string;
     /**
      * Sets the client instance.
      */
@@ -27,9 +27,9 @@ export default abstract class Repository<T = ModelInterface> {
      */
     protected getEndpoint(): string;
     /**
-     * Returns the namespace.
+     * Returns the envelope.
      */
-    protected getNamespace(): string | null;
+    protected getEnvelope(): string | null;
     /**
      * Returns the unwrapped main data from the response payload.
      */

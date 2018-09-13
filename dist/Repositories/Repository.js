@@ -5,10 +5,6 @@ var Repository = /** @class */ (function () {
      * Sets the client instance.
      */
     function Repository(client) {
-        /**
-         * The namespace or name of the key used to wrap the main data of the payload.
-         */
-        this.namespace = 'data';
         this.client = client;
     }
     /**
@@ -24,17 +20,17 @@ var Repository = /** @class */ (function () {
         return this.endpoint;
     };
     /**
-     * Returns the namespace.
+     * Returns the envelope.
      */
-    Repository.prototype.getNamespace = function () {
-        return this.namespace === undefined ? null : this.namespace;
+    Repository.prototype.getEnvelope = function () {
+        return this.envelope === undefined ? null : this.envelope;
     };
     /**
      * Returns the unwrapped main data from the response payload.
      */
     Repository.prototype.getResponseData = function (response) {
-        var namespace = this.getNamespace();
-        return namespace ? response.data[namespace] : response.data;
+        var envelope = this.getEnvelope();
+        return envelope ? response.data[envelope] : response.data;
     };
     return Repository;
 }());

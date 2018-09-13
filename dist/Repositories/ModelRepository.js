@@ -110,8 +110,8 @@ var ModelRepository = /** @class */ (function (_super) {
         });
     };
     /** @inheritDoc */
-    ModelRepository.prototype.update = function (model, params) {
-        if (params === void 0) { params = {}; }
+    ModelRepository.prototype.update = function (model, attributes) {
+        if (attributes === void 0) { attributes = {}; }
         return __awaiter(this, void 0, void 0, function () {
             var client, endpoint, id, response, payload;
             return __generator(this, function (_a) {
@@ -120,7 +120,7 @@ var ModelRepository = /** @class */ (function (_super) {
                         client = this.getClient();
                         endpoint = this.getEndpoint();
                         id = model.getRouteKey();
-                        return [4 /*yield*/, client.patch(endpoint + "/" + id, params)];
+                        return [4 /*yield*/, client.patch(endpoint + "/" + id, attributes)];
                     case 1:
                         response = _a.sent();
                         payload = this.getResponseData(response);

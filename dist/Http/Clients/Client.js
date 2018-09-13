@@ -48,43 +48,31 @@ var Client = /** @class */ (function () {
     Client.prototype.get = function (path, params) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2 /*return*/, this.client.get(path, {
-                        headers: _.pick(params, ['headers']),
-                        params: _.omit(params, ['headers'])
-                    })];
+                return [2 /*return*/, params ? this.client.get(path, this.processParams(params)) : this.client.get(path)];
             });
         });
     };
     /** @inheritDoc */
-    Client.prototype.post = function (path, params) {
+    Client.prototype.post = function (path, data, params) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2 /*return*/, this.client.post(path, params, {
-                        headers: _.pick(params, ['headers']),
-                        params: _.pick(params, ['query'])
-                    })];
+                return [2 /*return*/, params ? this.client.post(path, data, this.processParams(params)) : this.client.post(path, data)];
             });
         });
     };
     /** @inheritDoc */
-    Client.prototype.patch = function (path, params) {
+    Client.prototype.patch = function (path, data, params) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2 /*return*/, this.client.patch(path, params, {
-                        headers: _.pick(params, ['headers']),
-                        params: _.pick(params, ['query'])
-                    })];
+                return [2 /*return*/, params ? this.client.patch(path, data, this.processParams(params)) : this.client.patch(path, data)];
             });
         });
     };
     /** @inheritDoc */
-    Client.prototype.put = function (path, params) {
+    Client.prototype.put = function (path, data, params) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2 /*return*/, this.client.put(path, params, {
-                        headers: _.pick(params, ['headers']),
-                        params: _.pick(params, ['query'])
-                    })];
+                return [2 /*return*/, params ? this.client.put(path, data, this.processParams(params)) : this.client.put(path, data)];
             });
         });
     };
@@ -92,12 +80,22 @@ var Client = /** @class */ (function () {
     Client.prototype["delete"] = function (path, params) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2 /*return*/, this.client["delete"](path, {
-                        headers: _.pick(params, ['headers']),
-                        params: _.omit(params, ['headers'])
-                    })];
+                return [2 /*return*/, params ? this.client["delete"](path, this.processParams(params)) : this.client["delete"](path)];
             });
         });
+    };
+    /**
+     * Processes the given request parameters.
+     */
+    Client.prototype.processParams = function (requestParams) {
+        var params = {
+            params: _.omit(requestParams, ['headers'])
+        };
+        var headers = _.get(requestParams, 'headers');
+        if (headers) {
+            params.headers = headers;
+        }
+        return params;
     };
     return Client;
 }());
